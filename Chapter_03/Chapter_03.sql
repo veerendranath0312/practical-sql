@@ -101,9 +101,51 @@ SELECT * FROM teachers
 WHERE school = 'F. D. Roosevelt HS' AND
       (salary < 38000 OR salary > 40000);
 
+-- Note how the results change if we omit parentheses. That's
+-- because the AND operator takes precedence over OR and is
+-- evaluated first:
+
+SELECT *
+FROM teachers
+WHERE school = 'F.D. Roosevelt HS'
+    AND salary < 38000 OR salary > 40000;
+
 -- Listing 3-10: A SELECT statement including WHERE and ORDER BY
 
 SELECT *
 FROM teachers
 WHERE school LIKE '%Roos%'
 ORDER BY hire_date DESC;
+
+----------------------------------------------------------------------------
+-- Try It Yourself Questions and Answers
+----------------------------------------------------------------------------
+
+-- 1. The school district superintendent asks for a list of teachers in each
+-- school. Write a query that lists the schools in alphabetical order along
+-- with teachers ordered by last name A-Z.
+
+-- Answer:
+
+SELECT school, first_name, last_name
+FROM teachers
+ORDER BY school, last_name;
+
+-- 2. Write a query that finds the one teacher whose first name starts
+-- with the letter 'S' and who earns more than $40,000.
+
+-- Answer:
+
+SELECT *
+FROM teachers
+WHERE first_name ILIKE 's%' AND
+      salary > 40000;
+
+-- 3. Rank teachers hired since Jan. 1, 2010, ordered by highest paid to lowest.
+
+-- Answer:
+
+SELECT *
+FROM teachers
+WHERE hire_date >= '2010-01-01'
+ORDER BY salary DESC;
