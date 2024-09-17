@@ -98,7 +98,7 @@ WHERE last_name = 'Cole' OR
       last_name = 'Bush';
 
 SELECT * FROM teachers
-WHERE school = 'F. D. Roosevelt HS' AND
+WHERE school = 'F.D. Roosevelt HS' AND
       (salary < 38000 OR salary > 40000);
 
 -- Note how the results change if we omit parentheses. That's
